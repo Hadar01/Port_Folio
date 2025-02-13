@@ -53,7 +53,7 @@ export {
   typescript,
   threejs,
   meta,
-  shopify,
+
   starbucks,
   tesla,
   carrent,
