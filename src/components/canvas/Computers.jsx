@@ -10,22 +10,18 @@ const Computers = ({ isMobile }) => {
 
   useEffect(() => {
     const handleMouseMove = (event) => {
-      
       const { clientX, clientY } = event;
       const xRotation = ((clientY / window.innerHeight) * 2 - 1) * 0.01; // Reduce rotation intensity
       const yRotation = ((clientX / window.innerWidth) * 2 - 1) * 0.01; // Reduce rotation intensity
       setRotation([xRotation, yRotation, 0]);
     };
-  
+
     window.addEventListener("mousemove", handleMouseMove);
-  
+
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
     };
   }, []);
-  
-  
-  
 
   useFrame(() => {
     if (!isMobile) {
@@ -50,7 +46,7 @@ const Computers = ({ isMobile }) => {
         object={computer.scene}
         scale={isMobile ? 2.5 : 3.25}
         position={isMobile ? [0, -3.5, 0] : [0, -3.75, 0]}
-        rotation={isMobile ? [-0.02, -0.0125, -0.0125] :[0,  Math.PI / 2., -0.0125]}
+        rotation={isMobile ? [-0.02, -0.0125, -0.0125] : [0, Math.PI / 2, -0.0125]}
       />
     </mesh>
   );
@@ -90,17 +86,11 @@ const ComputersCanvas = () => {
     >
       <Suspense fallback={<CanvasLoader />}>
         <OrbitControls
-        autoRotate={true}
-        autoRotateSpeed={3.0}
+          autoRotate={true}
+          autoRotateSpeed={3.0}
           enableZoom={false}
-          enablePan={isMobile? true : false}
-          enableDamping={true}
-          dampingFactor={0.2}
-          // in this my model is rotating fine with the mouse in mobile version ,but in windows view it rotating too much like all over the website but i want it to only rotate on its orgin
-          
+          enablePan={ false}
          
-          maxPolarAngle={Math.PI / 2}
-          minPolarAngle={Math.PI / 2}
         />
         <Computers isMobile={isMobile} />
       </Suspense>
