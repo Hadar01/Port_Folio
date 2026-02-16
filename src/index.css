@@ -4,6 +4,24 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Add to your main CSS file */
+* {
+  /* Enable hardware acceleration */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  /* Prevent lag on scroll */
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Reduce animations on mobile */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 * {
   margin: 0;
   padding: 0;
